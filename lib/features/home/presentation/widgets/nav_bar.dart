@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:widget_challenge/core/colors/app_colors.dart';
+import 'package:widget_challenge/features/home/presentation/blocs/controller_notifier.dart';
+import 'package:widget_challenge/features/home/presentation/blocs/controller_state.dart';
 import 'package:widget_challenge/features/home/presentation/blocs/nav_bar_bloc.dart';
-import 'package:widget_challenge/features/home/presentation/blocs/nav_bar_state.dart';
-import 'package:widget_challenge/features/home/presentation/screens/home_screen.dart';
 import 'package:widget_challenge/providers.dart';
 
 final _duration = const Duration(milliseconds: 600);
@@ -76,7 +76,6 @@ class NavBarBody extends StatelessWidget {
         return GestureDetector(
           onVerticalDragEnd: navBarBLoC.onVerticalDragEnd,
           onVerticalDragUpdate: navBarBLoC.onVerticalDragUpdate,
-          onTap: navBarBLoC.onTap,
           child: Container(
             margin: EdgeInsets.only(bottom: state.margin),
             height: state.height,
@@ -91,10 +90,65 @@ class NavBarBody extends StatelessWidget {
                   ? AppColors.gradient
                   : AppColors.gradientTwo,
             ),
-            child: const NavBarMinChild(),
+            child: AnimatedSwitcher(
+              duration: _duration,
+              child: state.showControllers
+                  ? const SizedBox.shrink()
+                  : const NavBarMinChild(),
+            ),
           ),
         );
       },
+    );
+  }
+}
+
+class NavBarMinChild extends StatelessWidget {
+  const NavBarMinChild({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final song = context.read(homeBloc.state).listening;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Expanded(
+          child: Icon(
+            Icons.style_rounded,
+            size: kToolbarHeight * .65,
+            color: Colors.white,
+          ),
+        ),
+        Expanded(
+          child: Align(
+            child: GestureDetector(
+              onTap: context.read(navBarBloc).onTap,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(kToolbarHeight),
+                child: Image.asset(
+                  song.img,
+                  fit: BoxFit.cover,
+                  height: kToolbarHeight * 1.1,
+                  width: kToolbarHeight * 1.1,
+                ),
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Align(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(kToolbarHeight / 2),
+              child: Image.asset(
+                song.artist.img,
+                fit: BoxFit.cover,
+                height: kToolbarHeight * .7,
+                width: kToolbarHeight * .7,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

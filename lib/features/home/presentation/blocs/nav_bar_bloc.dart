@@ -1,9 +1,10 @@
-import 'dart:async';
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:widget_challenge/features/home/presentation/blocs/controller_notifier.dart';
 import 'package:widget_challenge/features/home/presentation/blocs/nav_bar_state.dart';
+
+const _radius = 20.0;
 
 class NavBarBLoC extends StateNotifier<NavBarState> {
   NavBarBLoC({@required this.controllerNotifier})
@@ -48,7 +49,7 @@ class NavBarBLoC extends StateNotifier<NavBarState> {
   void onVerticalDragUpdate(DragUpdateDetails details) {
     if (state.showControllers) {
       final newHeight = _currentHeight - details.delta.dy;
-      final borderMargin = lerpDouble(20, 0, _currentHeight / _maxHeight);
+      final borderMargin = lerpDouble(_radius, 0, _currentHeight / _maxHeight);
       final newWidth = lerpDouble(
         _screenSize.width * .6,
         _screenSize.width,
@@ -67,9 +68,9 @@ class NavBarBLoC extends StateNotifier<NavBarState> {
   void listenAnimation(double value) {
     if (_currentHeight != null) {
       state = state.copyWith(
-        borderRadius: lerpDouble(20, 0, value),
+        borderRadius: lerpDouble(_radius, 0, value),
         height: lerpDouble(_minHeight, _currentHeight, value),
-        margin: lerpDouble(20, 0, value),
+        margin: lerpDouble(_radius, 0, value),
         width: lerpDouble(_screenSize.width * .6, _screenSize.width, value),
       );
     }
@@ -79,20 +80,4 @@ class NavBarBLoC extends StateNotifier<NavBarState> {
     controllerNotifier.change(controllerNotifier.state.copyWith(forward: true));
     state = state.copyWith(showControllers: true);
   }
-}
-
-class ControllerNotifier extends StateNotifier<ControllerState> {
-  ControllerNotifier() : super(ControllerState.initial());
-
-  StreamSubscription<ControllerState> _subscription;
-  set suscription(StreamSubscription<ControllerState> sub) =>
-      _subscription = sub;
-
-  @override
-  void dispose() {
-    _subscription?.cancel();
-    super.dispose();
-  }
-
-  void change(ControllerState value) => state = value;
 }
