@@ -1,16 +1,21 @@
-# widget_challenge
+## **WIDGET CHALLENGE**
+### Flutter Widget Challenge proposed by diegoveloper for the Flutter Spanish Comunity
 
-A new Flutter project.
+## **NOTES**
+```
+flutter pub get
+flutter run
+```
 
-## Getting Started
+###  Screens
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<TABLE BORDER>
+    <TR>
+        <TH style="text-align:center">NAVBAR CLOSE</TH>
+        <TH style="text-align:center">NAVBAR OPEN</TH>
+    </TR>
+	<TR>
+		<TD><img src="screenshots/close.png" alt="close" width="200"/></TD>  
+		<TD><img src="screenshots/open.png" alt="open" width="200"/></TD>  
+	</TR>
+</TABLE>
