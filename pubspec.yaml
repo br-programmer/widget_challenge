@@ -1,0 +1,44 @@
+name: widget_challenge
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.0
+  flutter_riverpod: 0.12.4
+  equatable: 1.2.6
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: Josefin
+      fonts:
+        - asset: assets/fonts/JosefinSans-Light.ttf
+          weight: 500
+        - asset: assets/fonts/JosefinSans-Regular.ttf
+          weight: 600
+        - asset: assets/fonts/JosefinSans-Medium.ttf
+          weight: 700
+        - asset: assets/fonts/JosefinSans-SemiBold.ttf
+          weight: 800
+        - asset: assets/fonts/JosefinSans-Bold.ttf
+          weight: 900
