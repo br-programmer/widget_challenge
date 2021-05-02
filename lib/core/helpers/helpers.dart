@@ -1,34 +1,44 @@
 import 'package:widget_challenge/features/home/domain/models/song.dart';
+import 'package:widget_challenge/features/navbar/domain/models/nav.dart';
+
+const _pathImages = 'assets/images/';
+const _pathIcons = 'assets/icons/';
 
 class Helpers {
   static List<Artist> favorites = const [
-    Artist(name: 'A\$ap Rocky', img: 'assets/images/person1.png'),
-    Artist(name: 'EDX', img: 'assets/images/person2.png'),
-    Artist(name: 'Bloody Tear', img: 'assets/images/person3.png'),
-    Artist(name: 'Other', img: 'assets/images/person4.png'),
+    Artist(name: 'A\$ap Rocky', img: '${_pathImages}person1.png'),
+    Artist(name: 'EDX', img: '${_pathImages}person2.png'),
+    Artist(name: 'Bloody Tear', img: '${_pathImages}person3.png'),
+    Artist(name: 'Other', img: '${_pathImages}person4.png'),
   ];
   static List<Song> recent = [
     Song(
       title: 'Lxst Cxntury',
       artist: Helpers.favorites[0],
-      img: 'assets/images/img2.png',
+      img: '${_pathImages}img2.png',
     ),
     Song(
       title: '\$ucideBoy\$',
       artist: Helpers.favorites[1],
-      img: 'assets/images/img1.png',
+      img: '${_pathImages}img1.png',
     ),
     Song(
       title: 'Health/Beauty',
       artist: Helpers.favorites[2],
-      img: 'assets/images/img3.png',
+      img: '${_pathImages}img3.png',
     ),
     Song(
       title: 'Music',
       artist: Helpers.favorites[3],
-      img: 'assets/images/img4.png',
+      img: '${_pathImages}img4.png',
     ),
   ];
 
-  static Song listening = recent[0];
+  static Nav nav = Nav(
+    song: recent[0],
+    icon: '${_pathIcons}icon_cards.png',
+    randon: '${_pathIcons}icon_random.png',
+    play: '${_pathIcons}icon_pause.png',
+    stream: '${_pathIcons}icon_stream.png',
+  );
 }

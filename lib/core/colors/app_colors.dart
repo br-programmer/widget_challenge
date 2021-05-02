@@ -5,18 +5,12 @@ class AppColors {
   static final Color textColor = Color(0xFF241069);
   static final Color subTextColor = Color(0xFF9882D5);
   static final LinearGradient gradient = LinearGradient(
-    colors: const [
+    colors: [
       Color(0xFFAE52FF),
-      Color(0xFF4C65F6),
       Color(0xFF4C65F6),
       Color(0xFF3981E9),
       Color(0xFFAE52FF),
     ],
-    begin: Alignment.centerLeft,
-    end: Alignment.centerRight,
-  );
-  static final LinearGradient gradientTwo = LinearGradient(
-    colors: [AppColors.primary, AppColors.primary],
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
   );

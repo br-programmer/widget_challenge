@@ -6,15 +6,17 @@ class NavBarState extends Equatable {
     @required this.width,
     @required this.height,
     @required this.showControllers,
-    @required this.margin,
+    @required this.padding,
     @required this.borderRadius,
+    @required this.percent,
   });
 
   final double width;
   final double height;
   final bool showControllers;
-  final double margin;
+  final double padding;
   final double borderRadius;
+  final double percent;
 
   NavBarState copyWith({
     double width,
@@ -22,21 +24,24 @@ class NavBarState extends Equatable {
     bool showControllers,
     double margin,
     double borderRadius,
+    double percent,
   }) =>
       NavBarState(
         width: width ?? this.width,
         height: height ?? this.height,
         showControllers: showControllers ?? this.showControllers,
-        margin: margin ?? this.margin,
+        padding: margin ?? this.padding,
         borderRadius: borderRadius ?? this.borderRadius,
+        percent: percent ?? this.percent,
       );
 
   static NavBarState initial() => NavBarState(
-        width: 0,
-        height: 0,
+        width: 0.0,
+        height: 0.0,
         showControllers: false,
-        margin: 20,
-        borderRadius: 20,
+        padding: 20.0,
+        borderRadius: 20.0,
+        percent: 1.0,
       );
 
   @override
@@ -44,7 +49,8 @@ class NavBarState extends Equatable {
         width,
         height,
         showControllers,
-        margin,
+        padding,
         borderRadius,
+        percent,
       ];
 }

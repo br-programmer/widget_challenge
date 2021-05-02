@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:widget_challenge/features/home/presentation/blocs/controller_state.dart';
+import 'package:widget_challenge/features/navbar/presentation/blocs/controller_state.dart';
 
 class ControllerNotifier extends StateNotifier<ControllerState> {
   ControllerNotifier() : super(ControllerState.initial());
